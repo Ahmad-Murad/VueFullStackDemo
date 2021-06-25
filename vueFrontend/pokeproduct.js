@@ -57,7 +57,7 @@ new Vue({
 		var index = 0;
 		for(let i = 0; i < this.rows.length; i ++)
 		{
-			if(event.target.id == this.rows[i].DescriptionId)
+			if(event.target.id == this.rows[i].Description)
 			{
 				index = i;
 			}				

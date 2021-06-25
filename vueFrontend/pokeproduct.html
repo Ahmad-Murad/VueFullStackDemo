@@ -19,7 +19,7 @@
 		<td v-for="col in columns">
 		<span v-if = "col == 'Price'"> <img src = "https://drive.google.com/uc?id=1z9nRZhelV3uNpvvDKCFYpQgUwYSl872l"> {{row[col]}}</span>
 		<span v-else-if = "col == 'Image'"> <img :src = "row[col]"></span>
-		<span v-else-if = "col == 'DescriptionId'"><button :id = "row[col]" type = "button" v-on:click = "DescriptionClick()">See More</button> </span>
+		<span v-else-if = "col == 'Description'"><button :id = "row[col]" type = "button" v-on:click = "DescriptionClick()">See More</button> </span>
 		<span v-else>{{row[col]}}</span>
 		</td>
 		 
