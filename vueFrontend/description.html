@@ -1,13 +1,22 @@
 <h1>Let's take a closer look</h1>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<!---Element that enacts the vuejs scripts --->
 <div id = "ItemDesc">
+	<!---Static element that sets the image on the page  --->
 	<div><img :src = "img"></div>
+	<!---Static element that sets the product name  --->
 	<div>Product Name: {{product}}</div>
+	<!---Static element that sets the price on the page  --->
 	<div>Price: <img src = "https://drive.google.com/uc?id=1z9nRZhelV3uNpvvDKCFYpQgUwYSl872l"> {{price}}</div>
+	<!---Static element that sets the product description on the page  --->
 	<div>Description: {{description}} </div>
+	<!---Static element that sets the product type on the page  --->
 	<div>Item Type: {{type}} </div>
+	<!---Static element that sets the product likes on the page, and the like button that increments the like value locally and on the database through a post request --->
+	
 	<div>Likes: {{likes}}  <button id = "likebutton" type = "button" v-on:click = "Like()"></button> </div>
+	<!---Button that goes back to the product table--->
 	<button type = "button" v-on:click = "GoBack()">Back To Product Listings</button>
  </div>
  <script src="description.js"></script>

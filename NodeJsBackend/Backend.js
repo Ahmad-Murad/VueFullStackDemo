@@ -13,7 +13,7 @@ app.get('/GetProductsBasic', cors(),function (req, res) {
 	con.connect(function(err) {
 		if (err) throw err;
 		console.log("Connected!");
-		con.query("select img_url as Image, product_name as Product,price as Price,likes as Likes,id as Description from pokemartapp.products", function (err, result) {
+		con.query("select img_url as Image, product_name as Product,price as Price,likes as Likes,id as DescriptionId from pokemartapp.products", function (err, result) {
 		if (err) throw err;
 		con.end
 		console.log(result);
@@ -50,8 +50,8 @@ app.get('/GetProductDescType', cors(),function (req, res) {
 		});
 	});
 })
-app.get('/Login', cors(),function (req, res) {
-  /* var con = QueryInit();
+/*app.get('/Login', cors(),function (req, res) {
+  var con = QueryInit();
 
 
 	con.connect(function(err) {
@@ -63,8 +63,8 @@ app.get('/Login', cors(),function (req, res) {
 		res.json(result);
 		});
 	WIP
-	});*/
-})
+	});
+})*/
 app.post('/like', cors(),function (req, res) {
 	console.log(req.body.data)
 	var con = QueryInit()
