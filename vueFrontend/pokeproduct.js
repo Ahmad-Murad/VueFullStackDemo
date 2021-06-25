@@ -62,6 +62,11 @@ new Vue({
 				index = i;
 			}				
 		}
+		/*
+		This username would be supplied by the login page, but given that it is not implemented yet, this is where it is hardcoded,
+		the database contains two user "dummy" and "dummy2", more can be added through there to further rigorusly test like functionality,
+		as liking a product is tied to the user and the product
+		*/
 		localStorage.username = "dummy"
 		localStorage.id = event.target.id
 		localStorage.url = this.rows[index].Image

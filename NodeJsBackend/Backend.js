@@ -1,3 +1,6 @@
+/*
+Boiler plate to setup mysql, express, json parsing and CORS policies
+*/
 var mysql = require('mysql');
 var express = require('express');
 var app = express();
@@ -6,6 +9,10 @@ var bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.options('*', cors());
+
+/*
+Get method that returns a list of the basic info of every product, not including product_description or type  
+*/
 app.get('/GetProductsBasic', cors(),function (req, res) {
    var con = QueryInit();
 
@@ -21,7 +28,9 @@ app.get('/GetProductsBasic', cors(),function (req, res) {
 		});
 	});
 })
-
+/*
+Returns everything about a single product, no longer used, but may be useful in the future
+*/
 app.get('/GetProductDetailed', cors(),function (req, res) {
    var con = QueryInit();
 
@@ -36,6 +45,9 @@ app.get('/GetProductDetailed', cors(),function (req, res) {
 		});
 	});
 })
+/*
+Returns only a singles product's description and type, used for in ddecription.html
+*/
 app.get('/GetProductDescType', cors(),function (req, res) {
    var con = QueryInit();
 
@@ -50,6 +62,9 @@ app.get('/GetProductDescType', cors(),function (req, res) {
 		});
 	});
 })
+/*
+Login method that is a WIP, not relevant to demo
+*/
 /*app.get('/Login', cors(),function (req, res) {
   var con = QueryInit();
 
@@ -65,15 +80,24 @@ app.get('/GetProductDescType', cors(),function (req, res) {
 	WIP
 	});
 })*/
+
+/*
+Post method that first checks whether or not a given user has liked a product in the database using a mysql query to see if the user product tuple is in
+the liked prodcuts table, 
+then depending on that query result increments or decrements the products likes by 1 and either adds or removes the user product tuple
+from the liked products table 
+*/
 app.post('/like', cors(),function (req, res) {
 	console.log(req.body.data)
 	var con = QueryInit()
 	con.connect(function(err) {
 		if (err) throw err;
+		//Query that returns a 1 if the user has liked the product, a 0 if they havn't yet
 		con.query("SELECT CASE WHEN EXISTS(SELECT username FROM pokemartapp.liked_products where(username = " +"'"+ req.body.data.username+ "'" +" and product_name = "+"'"+ req.body.data.product_name + "'"+")) THEN 1 ELSE 0  END as liked", function (err, result) {
 			if (err) throw err;
 			con.end
 			console.log(result[0].liked)
+			//The path to remove a like from the database
 			if(result[0].liked == 1)
 			{
 				var con2 = QueryInit();
@@ -94,6 +118,7 @@ app.post('/like', cors(),function (req, res) {
 					});
 				});
 			}		
+			//The path to add a like to the database
 			else
 			{
 				var con2 = QueryInit();
@@ -118,7 +143,9 @@ app.post('/like', cors(),function (req, res) {
 		});
 	});
 })
-
+/*
+Get method that checks if a given user has already liked a product 
+*/
 app.get('/CheckLiked', cors(),function (req, res) {
    var con = QueryInit();
 	console.log(req.query.username)
@@ -134,19 +161,23 @@ app.get('/CheckLiked', cors(),function (req, res) {
 	});
 })	
   
-
+/*
+NodeJS boilerplate to host the server
+*/
 var server = app.listen(8081, function () {
    var host = server.address().address
    var port = server.address().port
    console.log("Example app listening at http://%s:%s", host, port)
 })
-
+/*
+Helper method that returns a sql connection variable to initialize queries, change the user and password to whatever database you use 
+*/
 function QueryInit()
 {
 	var con = mysql.createConnection({
 	host: "localhost",
 	user: "root",
-	password: "Hackerman5959+"
+	password: "Password1"
 	});
 	return con
 }

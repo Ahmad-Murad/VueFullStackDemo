@@ -1,8 +1,15 @@
+/*
+Creates the database for the app
+*/
 CREATE DATABASE if not exists `PokeMartApp` ;
-
+/*
+Tells the following lines to use said database
+*/
 USE PokeMartApp;
 
-
+/*
+User table that holds necessary user information, not fully implmented onn the backend or frontend, password isn't hashed but in future will be
+*/
 drop table if exists User;
 create table User
 
@@ -16,6 +23,9 @@ create table User
     zip_code int
 )engine=InnoDB;
 
+/*
+Product table that holds product info 
+*/
 drop table if exists Products;
 create table Products
 
@@ -28,7 +38,9 @@ create table Products
     product_type varchar(45),
     img_url varchar(100)
 )engine=InnoDB;
-
+/*
+Table meant for a an invoice and cart feauture WIP
+*/
 drop table if exists Invoices;
 create table Invoices
 
@@ -40,7 +52,9 @@ create table Invoices
     quantity int 
     
 )engine=InnoDB;
-
+/*
+Linking table that allows user to like an individual product
+*/
 drop table if exists Liked_Products;
 create table Liked_Products
 
@@ -51,6 +65,10 @@ create table Liked_Products
     foreign key(product_name) references Products(product_name)
     
 )engine=InnoDB;
+/*
+Insert Statments that insert all relevant info into the database when the DDL is ran *Note* the Google drive links may or not work, 
+I couldn't find and image hosting site other than modifying the google drive links based on a medium article I read
+*/
 Insert into products(product_name,price,product_description,likes,product_type,img_url) values("Poke Ball",100,"Simple Pokemon Capturing Device",0,"Pokeball","https://drive.google.com/uc?id=1rZIZw7eePnqvbd8J6DScvws9O03U9_GX");
 Insert into products(product_name,price,product_description,likes,product_type,img_url) values("Great Ball",300,"Slightly Better than a pokeball",0,"Pokeball","https://drive.google.com/uc?id=1SqVlW5ku1cde7cwlUZNUSPMYiEzaxGpO");
 Insert into products(product_name,price,product_description,likes,product_type,img_url) values("Ultra Ball",600,"Best Standard Pokeball",0,"Pokeball","https://drive.google.com/uc?id=1Js9SAIrRSINRDu3t1ZoMvCbzAP22WMoO");
