@@ -1,0 +1,34 @@
+<h1>Welcome to the Pokemart</h1>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<link rel="stylesheet" href="pokeproduct.css">
+<div id="sixthTable">
+   <table>
+     <thead>
+       <tr>
+         <th v-for="col in columns" v-on:click="sortTable(col)">{{col}}
+           <div class="arrow" v-if="col == sortColumn" v-bind:class="[ascending ? 'arrow_up' : 'arrow_down']"></div>
+         </th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr v-for="row in get_rows()">
+	   
+         <td v-for="col in columns">
+		 <span v-if = "col == 'Price'"> <img src = "https://drive.google.com/uc?id=1z9nRZhelV3uNpvvDKCFYpQgUwYSl872l"> {{row[col]}}</span>
+		 <span v-else-if = "col == 'Image'"> <img :src = "row[col]"></span>
+		 <span v-else-if = "col == 'Description'"><button :id = "row[col]" type = "button" v-on:click = "DescriptionClick()">See More</button> </span>
+		 <span v-else>{{row[col]}}</span>
+		 </td>
+		 
+       </tr>
+     </tbody>
+  </table>
+  <div class="pagination">
+    <button class="number"
+         v-for="i in num_pages()"
+         v-bind:class="[i == currentPage ? 'active' : '']"
+         v-on:click="change_page(i)">{{i}}</div>
+  </span>
+</div>
+ <script src="pokeproduct.js"></script>

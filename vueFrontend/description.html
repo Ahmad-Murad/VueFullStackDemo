@@ -1,0 +1,13 @@
+<h1>Let's take a closer look</h1>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<div id = "ItemDesc">
+	<div><img :src = "img"></div>
+	<div>Product Name: {{product}}</div>
+	<div>Price: <img src = "https://drive.google.com/uc?id=1z9nRZhelV3uNpvvDKCFYpQgUwYSl872l"> {{price}}</div>
+	<div>Description: {{description}} </div>
+	<div>Item Type: {{type}} </div>
+	<div>Likes: {{likes}}  <button id = "likebutton" type = "button" v-on:click = "Like()"></button> </div>
+	<button type = "button" v-on:click = "GoBack()">Back To Product Listings</button>
+ </div>
+ <script src="description.js"></script>

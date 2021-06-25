@@ -1,0 +1,41 @@
+  
+<html>
+    <head>
+        <title>Log In</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+       
+        <link rel="stylesheet" href="./bootstrap-4.3.1-dist/css/bootstrap.min.css">
+    </head>
+	
+    <body>
+		<div id = "test">
+			<div class="container">
+				<div class="row justify-content-center">
+					<h1 class="col-12 text-center" id="title">
+						Online Pokemart Login
+					</h1>
+					<div class="alert alert-danger d-none" id="errorLabel"></div>
+					<form id="log-in" class="col-12 text-center" action="">
+						<fieldset>
+							<legend>Log In</legend>
+							<p id="Username">
+								<label for="user">Username</label>
+								<input v-model = "username" placeholder="username" required> {{userout}}
+							</p>
+							<p id="Password">
+								<label for="psw">Password</label>
+								<input v-model = "psw" id="psw" placeholder="password" name="psw" type="password" required /> {{pswout}}
+							</p>  
+						</fieldset>
+					</form> 
+					<div class="col-12 text-center">
+						<input class="col-auto btn btn-success" type="button" value="Login" v-on:click = logOn  id="login-button" />
+						<input class="col-auto btn btn-primary" type="button" value="Register" onclick="register()" id="register-button" /> 
+					</div> 
+					
+				</div>
+			</div>
+		</div>	
+		<script src="login.js"></script>
+    </body>
+</html>
